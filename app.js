@@ -2,19 +2,13 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const schema = require('./schema/schema');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const app = express();
 
 
-// const MongoClient = require('mongodb').MongoClient;
-// const uri = "mongodb+srv://test:test@cluster0-s2npo.mongodb.net/test?retryWrites=true&w=majority";
-// const client = new MongoClient(uri, { useNewUrlParser: true });
-// client.connect(err => {
-//   console.log('Connectd to db');
-//   const collection = client.db("test").collection("devices");
-//   // perform actions on the collection object
-//   client.close();
-// });
+// Allow Cross-Origin Requests
+app.use(cors());
 
 mongoose.connect("mongodb+srv://test:test@cluster0-s2npo.mongodb.net/test?retryWrites=true&w=majority");
 mongoose.connection.once('open', () => {
